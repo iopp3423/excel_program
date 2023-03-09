@@ -10,7 +10,7 @@ export default function centerPage(){
         messages: [
             {
                 role : 'user',
-                content : input
+                content : input + "엑셀 식으로 알려줘"
             }
         ]
       };
@@ -30,7 +30,9 @@ export default function centerPage(){
     const change = () =>{
     axios.post('https://api.openai.com/v1/chat/completions', data, config)
         .then(response => {
-            console.log(response.data);
+            const data = response.data;
+            const content = data.choices[0].message.content;
+            setText(content)
         })
         .catch(error => {
             console.error(error);
@@ -38,13 +40,11 @@ export default function centerPage(){
     }
     return(
     <>
-    <h3>
-        생성하고 싶은 엑셀 수식을 적어주세요
-    </h3>
-    <div id = "example">예시 : ~~~~를 만들어줘</div>
+    <h3>생성하고 싶은 엑셀 수식을 적어주세요</h3>
+    <div id = "example">원하는 식을 텍스트로 Excel Generate AI에게 알려주세요</div>
     <div className = "input_area">
         <div className = "area-container">
-            <textarea id="input" name="story" rows="1" placeholder="식으로 변경할 내용을 입력하세요." value={input} onChange={handleTextareaChange} >
+            <textarea id="input" name="story" rows="1" placeholder="예를 들어, 열 A에서 모든 직원의 평균 급여를 찾고 싶습니다" value={input} onChange={handleTextareaChange} >
             </textarea>
         </div>
         <div className = "area-container">
@@ -52,23 +52,28 @@ export default function centerPage(){
         </div>
     </div>
     <div id = "generate-container">
-        <button id = "generate-button" onClick={change}>생성하기</button>
+        <button id = "generate-button">생성하기</button>
     </div>
 
     <style jsx>{`
+    h3{
+        font-size : 30px;
+    }
     .input_area{
-        height : 500px;
+        min-height: 400px;
+        height : 100%;
         width : 100%;
         display : flex;
         justify-content : center;
     }
     .area-container{
         width : 100%;
-        height : 400px;
+        height : 100%;
         display : flex;
         justify-content: center;
     }
     #input{
+        min-height: 400px;
         width: 92%;
         height: 89%;
         padding: 24px;
@@ -77,6 +82,7 @@ export default function centerPage(){
         border-radius:15px;
     }
     #output{
+        min-height: 400px;
         font-size : 30px;
         width: 92%;
         height: 89%;
@@ -87,12 +93,14 @@ export default function centerPage(){
     }
     #example{
         margin-bottom : 10px;
+        color : #a9a9a9;
     }
     textarea{
         font-size : 30px;
     }
     #generate-container{
         width : 100%;
+        margin-top : 30px;
         display : flex;
         justify-content : center;
     }
@@ -112,6 +120,12 @@ export default function centerPage(){
         cursor: pointer; /* 마우스 커서 모양 설정 */
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* 그림자 설정 */
     }
+    #generate-button:hover {
+        background-color : blue;
+      }
+      #generate-button:active {
+        background-color: red;
+     }
     `}</style>
     </>
     )
