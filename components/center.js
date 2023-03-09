@@ -52,12 +52,13 @@ export default function centerPage(){
         </div>
     </div>
     <div id = "generate-container">
-        <button id = "generate-button">생성하기</button>
+        <button id = "generate-button" onClick = {change}>생성하기</button>
     </div>
 
     <style jsx>{`
     h3{
         font-size : 30px;
+        margin-left:10px;
     }
     .input_area{
         min-height: 400px;
@@ -94,6 +95,7 @@ export default function centerPage(){
     #example{
         margin-bottom : 10px;
         color : #a9a9a9;
+        margin-left:10px;
     }
     textarea{
         font-size : 30px;
@@ -109,7 +111,7 @@ export default function centerPage(){
         width : 200px;
         height : 50px;
         border : none;
-        background-color: #0a30d8;
+        background-color: #002ead;
         color:white;
         padding: 15px 32px; /* 안쪽 여백 설정 */
         text-align: center; /* 텍스트 정렬 설정 */
@@ -121,10 +123,10 @@ export default function centerPage(){
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* 그림자 설정 */
     }
     #generate-button:hover {
-        background-color : blue;
+        background-color : #0a0a23;
       }
       #generate-button:active {
-        background-color: red;
+        background-color: #002ead;
      }
     `}</style>
     </>
