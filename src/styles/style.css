@@ -1,0 +1,9 @@
+html, body {
+    font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
+      'Arial', sans-serif;
+    background-color: "#eeeeee";
+    height: 100%;
+    margin: 0;
+    padding-left : 30px;
+    padding-right: 30px;
+  }
