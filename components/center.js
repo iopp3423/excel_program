@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { UseState } from 'react';
 import axios from 'axios';
 export default function centerPage(){
 
-    const [text, setText] = useState('식이 출력됩니다.')
-    const [input, setInput] = useState()
+    const [text, setText] = UseState('식이 출력됩니다.')
+    const [input, setInput] = UseState()
 
     const data = {
         model: 'gpt-3.5-turbo',
