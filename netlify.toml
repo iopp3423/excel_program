@@ -1,6 +1,9 @@
 [build]
 command = "next build" 	
-publish = ".next"	
+commandOrigin: "config"
+environment:- NEXT_PRIVATE_TARGET
+publish = "/opt/build/repo/.next"	
+publishOrigin: "config"
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
